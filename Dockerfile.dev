@@ -1,0 +1,14 @@
+#User image node:16-alpine
+FROM node:16-alpine
+#Specify the node user will exec all instructions
+USER node
+#Create directory
+RUN mkdir -p /home/node/app
+#Move to directory
+WORKDIR /home/node/app
+#Set the ownership of the copying files to node user.
+COPY --chown=node:node ./package.json ./
+RUN npm install
+#Set the ownership of the copying files to node user.
+COPY --chown=node:node ./ ./
+CMD ["npm", "start"]
