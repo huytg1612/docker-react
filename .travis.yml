@@ -22,7 +22,7 @@ deploy:
   #Application name
   app: "docker-react"
   #Environment name
-  environment: "Docker-react-env"
+  env: "Docker-react-env"
   #Bucket name S3
   bucket_name: "elasticbeanstalk-us-west-2-560176329885"
   #Bucket path, normally it's similar to application name
