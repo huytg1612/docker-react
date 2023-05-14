@@ -1,0 +1,14 @@
+#This file will tell Travis what to do
+#Request a superuser to execute instruction
+sudo: required
+#Init docker service
+services:
+  - docker
+
+#Do stuff before run test or deployment
+before_install:
+  - docker build -f Dockerfile.dev -t huytg1612/docker-react .
+
+#Command to run test
+scripts:
+  - docker run -e CI=true huytg1612/docker-react npm run test -- --coverage
