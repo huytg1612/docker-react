@@ -1,26 +1,8 @@
 version: '3'
 services:
-  #Define service (type of container)
-  react-app:
+  web:
     build:
-      #wrap current directory to docker compose
       context: .
-      #Specify the dockerfile
-      dockerfile: Dockerfile.dev
-    #Define docker volume
-    volumes:
-      #Mark the folder inside container as placeholder
-      - /home/node/app/node_modules
-      #Mapping current folder path to folder inside container
-      - .:/home/node/app
+      dockerfile: Dockerfile
     ports:
-      #Mapping port from local machine to container
-      - "3000:3000"
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /home/node/app/node_modules
-      - .:/home/node/app
-    command: ["npm", "run", "test"]
+      - '80:80'

@@ -12,3 +12,24 @@ before_install:
 #Command to run test
 scripts:
   - docker run -e CI=true huytg1612/docker-react npm run test -- --coverage
+
+#Provide the AWS configuration for TravisCI
+deploy:
+  #Specify the aws service
+  provider: elasticbeanstalk
+  #Specify the environment region
+  region: "us-west-2"
+  #Application name
+  app: "docker-react"
+  #Environment name
+  environment: "Docker-react-env"
+  #Bucket name S3
+  bucket_name: "elasticbeanstalk-us-west-2-560176329885"
+  #Bucket path, normally it's similar to application name
+  bucket_path: "docker-react"
+  #Deploy only when master branch is updated
+  on:
+    branch: master
+  #Config the AWS IAM
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_ACCESS_KEY"
