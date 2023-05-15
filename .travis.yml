@@ -9,13 +9,14 @@ services:
 before_install:
   - docker build -f Dockerfile.dev -t huytg1612/docker-react .
 
-#Command to run test
+#Override default command
 scripts:
+  #Command to run test
   - docker run -e CI=true huytg1612/docker-react npm run test -- --coverage
 
 #Provide the AWS configuration for TravisCI
 deploy:
-  #Specify the aws service
+  #Specify the environment to host
   provider: elasticbeanstalk
   #Specify the environment region
   region: "us-west-2"

@@ -11,6 +11,8 @@ RUN npm run build
 
 #Run Phase
 FROM nginx
+#Map port in production environment. Only work in Production
+EXPOSE 80
 #Copy build folder from build phase to nginx
 COPY --from=builder /home/node/app/build /usr/share/nginx/html
 #The nginx will be start automatically after starting container
