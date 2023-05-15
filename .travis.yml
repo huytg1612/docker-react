@@ -7,6 +7,7 @@ services:
 
 #Do stuff before run test or deployment
 before_install:
+  #Have to use Dockerfile.dev to run test (dont use Dockerfile)
   - docker build -f Dockerfile.dev -t huytg1612/docker-react .
 
 #Override default command
