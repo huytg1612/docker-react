@@ -16,3 +16,4 @@ EXPOSE 80
 #Copy build folder from build phase to nginx
 COPY --from=builder /home/node/app/build /usr/share/nginx/html
 #The nginx will be start automatically after starting container
+#So we dont have to setup command "npm run start" here.
